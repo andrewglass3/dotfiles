@@ -7,25 +7,10 @@ export CLICOLOR_FORCE=1
 unsetopt nomatch
 
 # Nicer prompt.
-#parse_git_branch() {
-#     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-#}
-if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-  __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
-  GIT_PROMPT_ONLY_IN_REPO=1
-  source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
-fi
-
-#export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\$(parse_git_branch)\n'"$ "
-export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
-#export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\$(parse_git_branch)\[\033[00m]\n'"$ "
-#export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
-
-# Enable oh my posh - zsh based shell
-#eval "$(oh-my-posh init zsh)"
-
+# export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
+source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 # Enable plugins.
-plugins=(git brew history kubectl history-substring-search)
+plugins=(git brew history kubectl history-substring-search zsh-completions zsh-autosuggestions)
 
 # Custom $PATH with extra locations.
 export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:/usr/local/git/bin:$HOME/.composer/vendor/bin:$PATH
@@ -117,7 +102,11 @@ knownrm() {
 
 # Allow Composer to use almost as much RAM as Chrome.
 export COMPOSER_MEMORY_LIMIT=-1
-
+# if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+#   __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
+#   GIT_PROMPT_ONLY_IN_REPO=1
+#   source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
+# fi
 
 # Ask for confirmation when 'prod' is in a command string.
 #prod_command_trap () {
