@@ -106,6 +106,11 @@ knownrm() {
 # Allow Composer to use almost as much RAM as Chrome.
 export COMPOSER_MEMORY_LIMIT=-1
 
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+
 # Ask for confirmation when 'prod' is in a command string.
 #prod_command_trap () {
 #  if [[ $BASH_COMMAND == *prod* ]]
