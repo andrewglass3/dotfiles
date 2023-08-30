@@ -7,12 +7,17 @@ export CLICOLOR_FORCE=1
 unsetopt nomatch
 
 # Nicer prompt.
-parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
+#parse_git_branch() {
+#     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+#}
+if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
+  GIT_PROMPT_ONLY_IN_REPO=1
+  source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
+fi
 
-export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\$(parse_git_branch)\n'"$ "
-#export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
+#export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\$(parse_git_branch)\n'"$ "
+export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
 #export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\$(parse_git_branch)\[\033[00m]\n'"$ "
 #export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
