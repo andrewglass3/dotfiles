@@ -10,8 +10,8 @@ unsetopt nomatch
 export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
 
 # Enable oh my posh - zsh based shell
-eval "$(oh-my-posh init zsh)"
-# ZSH_THEME="agnoster"
+#eval "$(oh-my-posh init zsh)"
+
 # Enable plugins.
 plugins=(git brew history kubectl history-substring-search)
 
