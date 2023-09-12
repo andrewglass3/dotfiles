@@ -8,7 +8,7 @@ unsetopt nomatch
 
 # Nicer prompt.
 # export PS1=$'\n'"%F{green} %*%F %3~ %F{white}"$'\n'"$ "
-source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+#source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 # Enable plugins.
 plugins=(git brew history kubectl history-substring-search zsh-completions zsh-autosuggestions)
 
@@ -45,6 +45,7 @@ alias gc='git commit'
 alias gp='git pull --rebase'
 alias gcam='git commit -am'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+alias wk='cd ~/workspace'
 
 # Completions.
 autoload -Uz compinit && compinit
@@ -124,3 +125,4 @@ export COMPOSER_MEMORY_LIMIT=-1
 #}
 #shopt -s extdebug
 #trap prod_command_trap DEBUG
+source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
