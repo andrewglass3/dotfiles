@@ -54,6 +54,14 @@ alias gcam='git commit -am'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 alias wk='cd ~/workspace'
 
+## Required for zsh-completions ##
+if type brew &>/dev/null; then
+     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+     autoload -Uz compinit
+     compinit
+    fi
+
 # Completions.
 autoload -Uz compinit && compinit
 # Case insensitive.
