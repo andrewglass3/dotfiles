@@ -1,4 +1,4 @@
-*.DS_Store
+.DS_Store
 *.LSOverride
 Thumbs.db
 .bundle
@@ -18,8 +18,8 @@ crash.log
 crash.*.log
 
 # Exclude all .tfvars files, which are likely to contain sensitive data, such as
-# password, private keys, and other secrets. These should not be part of version 
-# control as they are data points which are potentially sensitive and subject 
+# password, private keys, and other secrets. These should not be part of version
+# control as they are data points which are potentially sensitive and subject
 # to change depending on the environment.
 *.tfvars
 *.tfvars.json
@@ -52,7 +52,7 @@ terraform.rc
 
 **/*.zip
 
-# python 
+# python
 __pycache__
 venv
 lambda_package
