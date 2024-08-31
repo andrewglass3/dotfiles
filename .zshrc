@@ -14,5 +14,6 @@ source $ZSH/oh-my-zsh.sh
 alias python="python3"
 alias wake="wakeonlan a8:a1:59:3e:ab:58"
 alias update-servers="cd /Users/andrewglass/workspace/github/ansible_playbooks && ansible-playbook update-ubuntu.yml --inventory=hosts"
+alias ls="lsd -la"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
