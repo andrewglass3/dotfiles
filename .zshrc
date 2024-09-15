@@ -13,7 +13,13 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 alias python="python3"
 alias wake="wakeonlan a8:a1:59:3e:ab:58"
-alias update-servers="cd /Users/andrewglass/workspace/github/ansible_playbooks && ansible-playbook update-ubuntu.yml --inventory=hosts"
+alias update-servers="cd /Users/andrew/workspace/github/ansible_playbooks && ansible-playbook update-ubuntu.yml --inventory=hosts"
 alias ls="lsd -la"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/Cellar/tfenv/3.0.0/versions/1.9.5/terraform terraform
