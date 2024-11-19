@@ -1,3 +1,8 @@
+// install homebrew via terminal -  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+// copy this file to your home directory (or anywhere you prefer)
+// brew install $(<packages.txt)
+// requires homebrew to be installed first
+
 zsh
 curl
 wget
@@ -45,3 +50,8 @@ ffmpeg
 sysdig
 terraform-docs
 mtr
+lsd
+rectangle
+betterdisplay
+iterm2
+1password-cli
