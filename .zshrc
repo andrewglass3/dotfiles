@@ -17,7 +17,7 @@ git
 source $ZSH/oh-my-zsh.sh
 alias python="python3"
 alias wake="wakeonlan a8:a1:59:3e:ab:58"
-alias update-servers="cd /Users/andrew/workspace/github/ansible_playbooks && ansible-playbook update-ubuntu.yml --inventory=hosts"
+alias update-servers="cd /Users/andrew/workspace/github/ansible_playbooks && ansible-playbook update-ubuntu-servers.yml --inventory=hosts"
 alias ls="lsd -la"
 alias workspace="cd ~/workspace"
 alias github="cd ~/workspace/github"
