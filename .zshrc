@@ -8,7 +8,7 @@
 
 export EDITOR="vim"
 export VISUAL="$EDITOR"
-export LANG="en_US.UTF-8"
+export LANG="en_GB.UTF-8"
 
 # Homebrew (Apple Silicon or Intel)
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
