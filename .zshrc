@@ -35,6 +35,7 @@ fi
 alias ll="ls -alF"
 alias la="ls -A"
 alias l="ls -CF"
+alias lzd="lazydocker"
 
 alias python="python3"
 alias wake="wakeonlan a8:a1:59:3e:ab:58"
