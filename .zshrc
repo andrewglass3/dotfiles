@@ -8,7 +8,7 @@
 
 export EDITOR="vim"
 export VISUAL="$EDITOR"
-export LANG="en_GB.UTF-8"
+export LANG="en_US.UTF-8"
 
 # Homebrew (Apple Silicon or Intel)
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
@@ -35,13 +35,12 @@ fi
 alias ll="ls -alF"
 alias la="ls -A"
 alias l="ls -CF"
-alias lzd="lazydocker"
 
 alias python="python3"
 alias wake="wakeonlan a8:a1:59:3e:ab:58"
-alias update-servers="cd /Users/andrew/workspace/github/ansible_playbooks && ansible-playbook update-ubuntu-servers.yml --inventory=hosts"
-alias update-lxc="cd /Users/andrew/workspace/github/ansible_playbooks && ansible-playbook update-ubuntu-lxc.yml --inventory=lxc-hosts"
-alias ls="lsd -la"
+alias update-servers="cd /Users/andrew/workspace/gitlab/ansible_playbooks && ansible-playbook update-ubuntu-servers.yml --inventory=hosts"
+alias update-lxc="cd /Users/andrew/workspace/gitlab/ansible_playbooks && ansible-playbook update-ubuntu-lxc.yml --inventory=lxc-hosts"
+#alias ls="lsd -la"
 alias workspace="cd ~/workspace"
 alias github="cd ~/workspace/github"
 alias gitlab="cd ~/workspace/gitlab"
@@ -80,10 +79,14 @@ mkcd() {
 }
 
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# -------------------------------------------------------------
+# iTerm2 shell integration – must be sourced **before** prompt
+# -------------------------------------------------------------
+if [[ -e "${HOME}/.iterm2_shell_integration.zsh" ]]; then
+    source "${HOME}/.iterm2_shell_integration.zsh"
+fi
 
-# oh-my-posh theme 
-eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/kushal.omp.json)"
+
 
 # =============================================================================
 # Path
@@ -105,3 +108,14 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Added by Antigravity IDE
 export PATH="/Users/andrew/.antigravity-ide/antigravity-ide/bin:$PATH"
+# >>> OpenBoot-Restore
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+# <<< OpenBoot-Restore
+
+# -------------------------------------------------------------
+# oh‑my‑posh – run **after** PATH is fully built and only once
+# -------------------------------------------------------------
+# Prevent double‑initialisation (e.g., after `source ~/.zshrc`)
+if [[ -z $POSH_SESSION_ID ]]; then
+    eval "$(oh-my-posh init zsh --config "$(brew --prefix oh-my-posh)/themes/kushal.omp.json")"
+fi
