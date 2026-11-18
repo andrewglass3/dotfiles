@@ -108,9 +108,10 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Added by Antigravity IDE
 export PATH="/Users/andrew/.antigravity-ide/antigravity-ide/bin:$PATH"
-# >>> OpenBoot-Restore
+
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-# <<< OpenBoot-Restore
+
+export SSH_AUTH_SOCK=/Users/andrew/.ssh/proton-pass-ssh-agent.sock
 
 # -------------------------------------------------------------
 # oh‑my‑posh – run **after** PATH is fully built and only once
