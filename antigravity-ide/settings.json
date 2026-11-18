@@ -7,5 +7,18 @@
     "terminal.integrated.fontFamily": "MesloLGS Nerd Font Mono",
     "terminal.integrated.fontSize": 14,
     "window.zoomLevel": 0.1,
-    "python.languageServer": "Default"
+    "python.languageServer": "Default",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "/bin/zsh",
+            "args": [
+                "-l"
+            ]
+        }
+    },
+    "terminal.integrated.shellIntegration.enabled": false,
+    "terminal.integrated.env.osx": {
+        "TERM": "xterm-256color"
+    }
 }
