@@ -116,7 +116,4 @@ export SSH_AUTH_SOCK=/Users/andrew/.ssh/proton-pass-ssh-agent.sock
 # -------------------------------------------------------------
 # oh‑my‑posh – run **after** PATH is fully built and only once
 # -------------------------------------------------------------
-# Prevent double‑initialisation (e.g., after `source ~/.zshrc`)
-if [[ -z $POSH_SESSION_ID ]]; then
-    eval "$(oh-my-posh init zsh --config "$(brew --prefix oh-my-posh)/themes/kushal.omp.json")"
-fi
+eval "$(oh-my-posh init zsh --config "$(brew --prefix oh-my-posh)/themes/kushal.omp.json")"
