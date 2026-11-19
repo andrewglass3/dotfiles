@@ -1,8 +1,26 @@
+# macOS
 .DS_Store
 *.LSOverride
+
+# Windows
 Thumbs.db
+
+# Editors / IDEs
+.vscode
+.idea
+
+# Ruby / Bundler
 .bundle
 
+# Python
+__pycache__
+venv
+lambda_package
+
+# Archives
+*.zip
+
+# Terraform
 *.terraform
 # Local .terraform directories
 **/.terraform/*
@@ -40,19 +58,3 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
-
-# macOs
-.DS_Store
-
-# vscode
-.vscode
-
-# intellij and pycharm
-.idea
-
-**/*.zip
-
-# python
-__pycache__
-venv
-lambda_package
