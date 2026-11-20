@@ -38,8 +38,8 @@ alias l="ls -CF"
 
 alias python="python3"
 alias wake="wakeonlan a8:a1:59:3e:ab:58"
-alias update-servers="cd /Users/andrew/workspace/gitlab/ansible_playbooks && ansible-playbook update-ubuntu-servers.yml --inventory=hosts"
-alias update-lxc="cd /Users/andrew/workspace/gitlab/ansible_playbooks && ansible-playbook update-ubuntu-lxc.yml --inventory=lxc-hosts"
+alias update-servers='(cd "$HOME/workspace/gitlab/ansible_playbooks" && ansible-playbook update-ubuntu-servers.yml --inventory=hosts)'
+alias update-lxc='(cd "$HOME/workspace/gitlab/ansible_playbooks" && ansible-playbook update-ubuntu-lxc.yml --inventory=lxc-hosts)'
 #alias ls="lsd -la"
 alias workspace="cd ~/workspace"
 alias github="cd ~/workspace/github"
@@ -107,11 +107,11 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # Added by Antigravity IDE
-export PATH="/Users/andrew/.antigravity-ide/antigravity-ide/bin:$PATH"
+export PATH="$HOME/.antigravity-ide/antigravity-ide/bin:$PATH"
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
-export SSH_AUTH_SOCK=/Users/andrew/.ssh/proton-pass-ssh-agent.sock
+export SSH_AUTH_SOCK="$HOME/.ssh/proton-pass-ssh-agent.sock"
 
 # -------------------------------------------------------------
 # oh‑my‑posh – run **after** PATH is fully built and only once
