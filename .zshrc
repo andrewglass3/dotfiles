@@ -9,6 +9,7 @@
 export EDITOR="vim"
 export VISUAL="$EDITOR"
 export LANG="en_US.UTF-8"
+export SSH_AUTH_SOCK="$HOME/.ssh/proton-pass-ssh-agent.sock"
 
 # Homebrew (Apple Silicon or Intel)
 if [[ -f "/opt/homebrew/bin/brew" ]]; then
@@ -17,6 +18,19 @@ elif [[ -f "/usr/local/bin/brew" ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
 fi
 
+BREW_PREFIX="$(command -v brew &>/dev/null && brew --prefix)"
+
+# =============================================================================
+# Path
+# =============================================================================
+
+# Prepend to PATH without duplicates (safe for `reload`)
+path_prepend() { [[ ":$PATH:" != *":$1:"* ]] && export PATH="$1:$PATH"; }
+
+path_prepend "$HOME/.local/bin"
+path_prepend "$HOME/bin"
+path_prepend "$HOME/.antigravity-ide/antigravity-ide/bin"
+[[ -n "$BREW_PREFIX" && -d "$BREW_PREFIX/opt/ruby/bin" ]] && path_prepend "$BREW_PREFIX/opt/ruby/bin"
 
 # =============================================================================
 # Aliases
@@ -46,7 +60,6 @@ alias github="cd ~/workspace/github"
 alias gitlab="cd ~/workspace/gitlab"
 alias yt-dlpp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'"
 alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
-
 
 # Safety
 alias rm="rm -i"
@@ -78,27 +91,6 @@ mkcd() {
     mkdir -p "$1" && cd "$1"
 }
 
-
-# -------------------------------------------------------------
-# iTerm2 shell integration – must be sourced **before** prompt
-# -------------------------------------------------------------
-if [[ -e "${HOME}/.iterm2_shell_integration.zsh" ]]; then
-    source "${HOME}/.iterm2_shell_integration.zsh"
-fi
-
-
-
-# =============================================================================
-# Path
-# =============================================================================
-
-# Prepend to PATH without duplicates (safe for `reload`)
-path_prepend() { [[ ":$PATH:" != *":$1:"* ]] && export PATH="$1:$PATH"; }
-
-path_prepend "$HOME/.local/bin"
-path_prepend "$HOME/bin"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-
 # =============================================================================
 # Local Configuration
 # =============================================================================
@@ -106,14 +98,24 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 # Load local config if exists (for machine-specific settings)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
-# Added by Antigravity IDE
-export PATH="$HOME/.antigravity-ide/antigravity-ide/bin:$PATH"
+# =============================================================================
+# Prompt & Shell Integrations
+# =============================================================================
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+# iTerm2 shell integration – must be sourced before prompt
+if [[ -e "${HOME}/.iterm2_shell_integration.zsh" ]]; then
+    source "${HOME}/.iterm2_shell_integration.zsh"
+fi
 
-export SSH_AUTH_SOCK="$HOME/.ssh/proton-pass-ssh-agent.sock"
+# oh-my-posh – run after PATH is fully built and only once
+if command -v oh-my-posh &>/dev/null; then
+    eval "$(oh-my-posh init zsh --config "$(brew --prefix oh-my-posh)/themes/kushal.omp.json")"
+fi
 
-# -------------------------------------------------------------
-# oh‑my‑posh – run **after** PATH is fully built and only once
-# -------------------------------------------------------------
-eval "$(oh-my-posh init zsh --config "$(brew --prefix oh-my-posh)/themes/kushal.omp.json")"
+# Zsh plugins (installed via Homebrew; zsh-syntax-highlighting must load last)
+if [[ -n "$BREW_PREFIX" ]]; then
+    [[ -f "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && \
+        source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    [[ -f "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && \
+        source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
